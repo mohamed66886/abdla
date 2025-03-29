@@ -40,7 +40,12 @@ body{
     transition: var(--main-duration);
     animation: bounce 1.5s infinite;
 }
-
+.test{
+    background-image: url(/img/Screenshot\ 2025-03-29\ at\ 4.13.03\ pm.png);
+    background-size:contain;
+    background-position: center;
+     height: 240px;
+}
 .icon_whats a{
     color: #fff;
     text-decoration: none;
