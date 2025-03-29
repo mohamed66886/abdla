@@ -1,0 +1,131 @@
+:root{
+    --main-color:#df413c;
+    --second-color:#2a2a5f;
+    --section-padding:60px;
+    --section-background:#ffe6e6;
+    --text-color:#2a2a5f;
+    --text-color-light:#f7f7f7;
+    --text-color-dark:#000;
+    --text-size:18px;
+    --text-size-large:24px;
+    --text-size-huge:36px;
+    --text-size-huge-large:48px;
+    --main-duration:0.3s;
+}
+body{
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--section-background);
+    color: var(--text-color);
+    direction: rtl;
+}
+header{
+    background-color: #fff;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    font-weight: bold;
+    color: var(--text-color);
+}
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .container .logo img{
+    width: 180px;
+}
+header .container nav ul{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+header .container nav ul li a{
+    text-decoration: none;
+    color: var(--text-color);
+    transition: var(--main-duration);
+}
+header .container nav ul li a:hover{
+    color: var(--main-color);
+}
+nav i{
+    font-size: 27px;
+    color: var(--main-color);
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+}
+.offcanvas-header .btn-close {
+    margin: 0 43% 0 0 !important;
+}
+.offcanvas-body button{
+    background-color: var(--second-color);
+    color: var(--section-background);
+}
+.list-unstyled li {
+    border-bottom: 1px solid #ccc;
+
+}
+.list-unstyled li a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    cursor: pointer;
+   direction: ltr;
+   margin: 0 20px;
+   font-size: 13px;
+
+}
+.list-unstyled li a i{
+    color: var(--main-color) !important;
+    font-size: 17px;
+}
+.list-unstyled li a:hover{
+    color: var(--main-color);
+    margin-right: 30px;
+}
+
+.offcanvas-header h5{
+    color: var(--second-color) !important;
+    font-weight: bold ! important;
+    font-size: 16px ! important;
+
+}
+.offcanvas-end{
+    width: 300px !important;
+}
+.active{
+ color: var(--main-color);
+}
+
+
+
+@media (max-width: 767px) {
+    header{
+        padding: 10px 20px;
+        font-size: 15px;
+    
+    }
+
+    header .container .logo img{
+        width: 120px;
+        margin: 10px auto;
+    }
+
+    header .container nav ul{
+      display: none;
+    }
+    header .container nav i{
+        display: block;
+    }
+    header .container nav .list-unstyled{
+        display: block;
+    }
+}
