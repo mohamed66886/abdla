@@ -3,6 +3,7 @@
     --second-color:#2a2a5f;
     --section-padding:60px;
     --section-background:#ffffff;
+    --section2-background:#ebeaea;
     --text-color:#2a2a5f;
     --text-color-light:#f7f7f7;
     --text-color-dark:#000;
@@ -184,9 +185,35 @@ end asd
     .col-md-4 .card .dark:hover h4{
         margin-bottom: 80px;
     }
+/* =================================================
+end cards
+================================================= */
 
+    .goodsel{
+        background-color: var(--section2-background);
+        margin-top: 20px;
+        padding: 20px 0;
+    }
+    .titleofgood h2{
+        text-align: center;
+        color: var(--second-color);
+         font-size: 25px;
+        margin: 20px 0;
+    }
+    .good{
+        text-align: center;
+        margin: 20px 0;
+    }
+    .good i{
+        font-size: 60px;
+        color: gray;
+    }
+    .good h2{
+        color: rgb(110, 105, 158);
+        font-size: 25px;
 
-    
+    }
+
 
 
 
@@ -214,4 +241,13 @@ end asd
     header .container nav .list-unstyled{
         display: block;
     }
+    .titleofgood h2{
+        font-size: 18px;
+        }
+        .good i{
+            font-size: 50px;
+        }
+        .good h2{
+            font-size: 23px;
+        }
 }
