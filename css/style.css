@@ -1,6 +1,7 @@
 :root{
     --main-color:#df413c;
     --second-color:#2a2a5f;
+    --third-color:#3675eb;
     --section-padding:60px;
     --section-background:#ffffff;
     --section2-background:#ebeaea;
@@ -213,13 +214,90 @@ end cards
         font-size: 25px;
 
     }
+/* =================================================
+end goodsel
+================================================= */
+footer{
+    background-color: var(--second-color);
+    color: #fff;
+    padding: 20px 0;
+}
+footer .container .row .col-md-4 h2{
+    font-size: 18px;
+    margin: 0 0 20px 0;
+}
+footer .container .row .col-md-4 h2::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #ffffff71;
+    margin: 15px 0;
+    top: 20px;
+}
+footer .container .row .col-md-4 p{
+    font-size: 13px;
+    margin: 0 0 10px 0;
+}
+footer .container .row .col-md-4 ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+   gap: 10px;
+}
 
+footer .container .row .col-md-4 ul li{
+    cursor: pointer;
+    transition: var(--main-duration);
 
+}
+footer .container .row .col-md-4 ul li:hover{
+    color: var(--main-color);
+}
+footer .container .row .col-md-4 ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+footer .container .row .col-md-4 ul li a:hover{
+    color: var(--main-color);
 
+}
+footer .container .row .col-md-4 ul li a i{
+    margin-left: 10px;
+}
+.numid{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
+}
+.links a{
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin: 10px 0;
+}
+.links a:hover{
+    color: var(--main-color);
+}
+.contact ul {
+    font-size: 24px;
+}
+.botomfooter{
 
-
-
+    color: #514e4e;
+    padding: 10px 0;
+}
+.botomfooter a{
+    text-decoration: none;
+    color: #514e4e;
+    transition: var(--main-duration);
+    margin: 0 5px;
+ 
+}
+.botomfooter a:hover{
+    color: var(--main-color);
+}
 @media (max-width: 767px) {
     header{
         padding: 10px 20px;
@@ -250,4 +328,11 @@ end cards
         .good h2{
             font-size: 23px;
         }
+        footer .container .row .col-md-4 h2{
+            margin-top: 20px;
+        }
+        .botomfooter{
+            text-align: center;
+        }
+
 }
