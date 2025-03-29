@@ -1,48 +1,67 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // تحميل بيانات المستخدم وعربة التسوق عند بدء التشغيل
+    // تهيئة الصفحة عند التحميل
+    initPage();
+});
+
+function initPage() {
+    // تحميل بيانات المستخدم
     loadUserData();
+    
+    // تهيئة عداد عربة التسوق
     updateCartCounter();
     
-    // تهيئة جميع مكونات الصفحة
+    // تهيئة تأثيرات البطاقات
     initCardHoverEffects();
+    
+    // تهيئة القائمة المتنقلة
     setupMobileMenu();
+    
+    // حماية الصور من النقر الأيمن
     disableImageRightClick();
+    
+    // تهيئة التمرير السلس
     setupSmoothScrolling();
+    
+    // تهيئة مودال التسجيل
     setupRegisterModal();
+    
+    // تهيئة زر واتساب
     setupWhatsAppButton();
-});
+    
+    // تهيئة أحداث إضافة المنتجات للسلة
+    setupProductEvents();
+}
 
 // ==================== نظام تسجيل المستخدم ====================
 
 function setupRegisterModal() {
     const registerBtn = document.getElementById('userRegisterBtn');
     const saveBtn = document.getElementById('saveUserBtn');
+    const cancelBtn = document.querySelector('#registerModal .btn-secondary');
     const imageUpload = document.getElementById('imageUpload');
     const imagePreview = document.getElementById('imagePreview');
-    const registerModal = document.getElementById('registerModal');
+    const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
     
-    // فتح المودال عند الضغط على تسجيل
+    // فتح مودال التسجيل
     if (registerBtn) {
         registerBtn.addEventListener('click', function() {
             const userData = getUserData();
-            const modal = new bootstrap.Modal(registerModal);
             
             if (userData) {
+                // إذا كان مستخدم مسجل، عرض بياناته
                 document.getElementById('userName').value = userData.name;
                 document.getElementById('phoneNumber').value = userData.phone;
                 imagePreview.style.backgroundImage = `url(${userData.avatar})`;
             } else {
-                // إعادة تعيين الحقول إذا لم يكن هناك مستخدم مسجل
-                document.getElementById('userName').value = '';
-                document.getElementById('phoneNumber').value = '';
-                imagePreview.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")';
+                // إذا كان غير مسجل، إعادة تعيين الحقول
+                resetRegisterForm();
             }
             
-            modal.show();
+            registerModal.show();
         });
     }
     
-    // تغيير صورة المستخدم
+    // إدارة اختيار الصورة
     if (imageUpload) {
         imageUpload.addEventListener('change', function(e) {
             if (e.target.files && e.target.files[0]) {
@@ -62,7 +81,7 @@ function setupRegisterModal() {
             const phone = document.getElementById('phoneNumber').value.trim();
             const avatar = imagePreview.style.backgroundImage.replace('url("', '').replace('")', '');
             
-            if (name && phone) {
+            if (validateUserData(name, phone)) {
                 const userData = {
                     name: name,
                     phone: phone,
@@ -71,31 +90,55 @@ function setupRegisterModal() {
                 
                 saveUserData(userData);
                 updateUserUI(userData);
-                
-                // إغلاق المودال
-                const modal = bootstrap.Modal.getInstance(registerModal);
-                modal.hide();
-                
-                showToast('تم حفظ بيانات المستخدم بنجاح');
-            } else {
-                showToast('الرجاء إدخال جميع البيانات المطلوبة');
+                registerModal.hide();
+                showToast('تم حفظ بياناتك بنجاح', 'success');
             }
+        });
+    }
+    
+    // إلغاء التسجيل
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', function() {
+            resetRegisterForm();
         });
     }
 }
 
-// حفظ بيانات المستخدم في localStorage
+function validateUserData(name, phone) {
+    if (!name) {
+        showToast('الرجاء إدخال الاسم الكامل', 'error');
+        return false;
+    }
+    
+    if (!phone) {
+        showToast('الرجاء إدخال رقم الهاتف', 'error');
+        return false;
+    }
+    
+    if (!/^[0-9]{10,15}$/.test(phone)) {
+        showToast('رقم الهاتف غير صحيح', 'error');
+        return false;
+    }
+    
+    return true;
+}
+
+function resetRegisterForm() {
+    document.getElementById('userName').value = '';
+    document.getElementById('phoneNumber').value = '';
+    document.getElementById('imageUpload').value = '';
+    document.getElementById('imagePreview').style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")';
+}
+
 function saveUserData(userData) {
     localStorage.setItem('userData', JSON.stringify(userData));
 }
 
-// جلب بيانات المستخدم من localStorage
 function getUserData() {
     const userData = localStorage.getItem('userData');
     return userData ? JSON.parse(userData) : null;
 }
 
-// تحميل بيانات المستخدم عند بدء التشغيل
 function loadUserData() {
     const userData = getUserData();
     if (userData) {
@@ -103,125 +146,240 @@ function loadUserData() {
     }
 }
 
-// تحديث واجهة المستخدم ببياناته
 function updateUserUI(userData) {
     const registerBtn = document.getElementById('userRegisterBtn');
     const userAvatarIcon = document.getElementById('userAvatarIcon');
     
     if (userData) {
-        // تحديث زر التسجيل ليعرض بيانات المستخدم
+        // تحديث زر التسجيل
         if (registerBtn) {
             registerBtn.innerHTML = `
-                <span class="user-info-name">${userData.name}</span>
-                <img src="${userData.avatar}" class="user-info-avatar" alt="صورة المستخدم">
+                <img src="${userData.avatar}" class="user-avatar-img" alt="صورة المستخدم">
+                <span class="user-name">${userData.name}</span>
             `;
-            registerBtn.classList.add('user-info-container');
+            registerBtn.classList.add('user-logged-in');
         }
         
-        // تحديث الأيقونة لتعرض صورة المستخدم
+        // تحديث أيقونة المستخدم
         if (userAvatarIcon) {
             userAvatarIcon.style.backgroundImage = `url(${userData.avatar})`;
-            userAvatarIcon.classList.remove('bi-person-circle');
-            userAvatarIcon.style.fontSize = '0';
+            userAvatarIcon.classList.add('avatar-has-image');
         }
     } else {
-        // إعادة تعيين الزر إذا لم يكن هناك مستخدم مسجل
+        // إعادة تعيين إذا لم يكن مسجلاً
         if (registerBtn) {
-            registerBtn.innerHTML = 'تسجيل';
-            registerBtn.classList.remove('user-info-container');
+            registerBtn.innerHTML = 'تسجيل الدخول';
+            registerBtn.classList.remove('user-logged-in');
         }
         
-        // إعادة تعيين الأيقونة
         if (userAvatarIcon) {
             userAvatarIcon.style.backgroundImage = '';
-            userAvatarIcon.classList.add('bi-person-circle');
-            userAvatarIcon.style.fontSize = '3rem';
+            userAvatarIcon.classList.remove('avatar-has-image');
         }
     }
 }
 
+// ==================== نظام عربة التسوق ====================
 
+function updateCartCounter() {
+    const cart = getCart();
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    document.querySelectorAll('.cart-counter').forEach(el => {
+        el.textContent = totalItems;
+        el.style.display = totalItems > 0 ? 'flex' : 'none';
+    });
+}
 
-// ==================== تأثيرات البطاقات ====================
+function addToCart(productId, productName, price = 0) {
+    let cart = getCart();
+    let existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: productId,
+            name: productName,
+            price: price,
+            quantity: 1,
+            addedAt: new Date().toISOString()
+        });
+    }
+    
+    saveCart(cart);
+    updateCartCounter();
+    showToast(`تم إضافة ${productName} إلى السلة`, 'success');
+}
+
+function removeFromCart(productId) {
+    let cart = getCart().filter(item => item.id !== productId);
+    saveCart(cart);
+    updateCartCounter();
+}
+
+function getCart() {
+    const cart = localStorage.getItem('cart');
+    return cart ? JSON.parse(cart) : [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// ==================== تأثيرات الواجهة ====================
 
 function initCardHoverEffects() {
-    const cards = document.querySelectorAll('.col-md-4 .card');
+    const cards = document.querySelectorAll('.product-card');
+    
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
-            this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
         });
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = '';
             this.style.boxShadow = '';
         });
-        
-        card.addEventListener('click', function() {
-            const productId = this.dataset.productId || 'prod-' + Math.random().toString(36).substr(2, 9);
-            const productName = this.querySelector('h4')?.textContent || 'منتج غير معروف';
-            addToCart(productId, productName);
-        });
     });
 }
 
-// ==================== القائمة المتنقلة ====================
-
 function setupMobileMenu() {
-    const menuButton = document.querySelector('.bi-list');
+    const menuButton = document.querySelector('.mobile-menu-button');
+    
     if (menuButton) {
         menuButton.addEventListener('click', function() {
-            document.body.classList.toggle('menu-open');
+            document.body.classList.toggle('mobile-menu-open');
         });
     }
 }
 
-// ==================== حماية الصور ====================
-
 function disableImageRightClick() {
-    document.querySelectorAll('img').forEach(img => {
+    document.querySelectorAll('img:not(.allow-right-click)').forEach(img => {
         img.addEventListener('contextmenu', function(e) {
             e.preventDefault();
-            showToast('نعتذر، حفظ الصور غير متاح');
+            showToast('حفظ الصور غير متاح', 'info');
         });
     });
 }
-
-// ==================== التمرير السلس ====================
 
 function setupSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            
             if (target) {
                 target.scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
     });
 }
 
-// ==================== زر واتساب ====================
+// ==================== تكامل واتساب ====================
 
 function setupWhatsAppButton() {
-    const whatsappButton = document.querySelector('.icon_whats');
-    if (whatsappButton) {
-        whatsappButton.addEventListener('click', function() {
+    const whatsappBtn = document.querySelector('.whatsapp-button');
+    
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', function() {
             const userData = getUserData();
-            let message = 'مرحباً، أنا مهتم بالمنتجات التي تقدمونها';
+            let message = 'مرحباً، أنا مهتم بالمنتجات لديكم';
             
             if (userData) {
-                message += `\nاسمي: ${userData.name}`;
-                if (userData.phone) {
-                    message += `\nرقم هاتفي: ${userData.phone}`;
-                }
+                message += `\n\nالاسم: ${userData.name}`;
+                message += `\nالهاتف: ${userData.phone}`;
+            }
+            
+            const cart = getCart();
+            if (cart.length > 0) {
+                message += '\n\nالمنتجات المختارة:';
+                cart.forEach(item => {
+                    message += `\n- ${item.name} (${item.quantity}x)`;
+                });
             }
             
             const encodedMessage = encodeURIComponent(message);
-            this.querySelector('a').href = `https://api.whatsapp.com/send?phone=966536297906&text=${encodedMessage}`;
+            const whatsappUrl = `https://wa.me/966536297906?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
         });
     }
 }
 
+// ==================== إدارة المنتجات ====================
+
+function setupProductEvents() {
+    // إضافة منتجات للسلة
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const productId = this.dataset.productId;
+            const productName = this.dataset.productName;
+            const productPrice = parseFloat(this.dataset.productPrice) || 0;
+            
+            addToCart(productId, productName, productPrice);
+        });
+    });
+    
+    // عرض تفاصيل المنتج
+    document.querySelectorAll('.view-product').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const productId = this.dataset.productId;
+            showProductDetails(productId);
+        });
+    });
+}
+
+function showProductDetails(productId) {
+    // هنا يمكن جلب تفاصيل المنتج من قاعدة البيانات أو مصدر البيانات
+    console.log('عرض تفاصيل المنتج:', productId);
+}
+
+// ==================== نظام الإشعارات ====================
+
+function showToast(message, type = 'info') {
+    const toastContainer = document.getElementById('toast-container') || createToastContainer();
+    const toast = document.createElement('div');
+    
+    toast.className = `toast toast-${type}`;
+    toast.innerHTML = `
+        <div class="toast-message">${message}</div>
+        <button class="toast-close">&times;</button>
+    `;
+    
+    toastContainer.appendChild(toast);
+    
+    // إظهار الإشعار
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 100);
+    
+    // إغلاق الإشعار عند النقر
+    toast.querySelector('.toast-close').addEventListener('click', () => {
+        hideToast(toast);
+    });
+    
+    // إخفاء الإشعار تلقائياً بعد 5 ثواني
+    setTimeout(() => {
+        hideToast(toast);
+    }, 5000);
+}
+
+function hideToast(toast) {
+    toast.classList.remove('show');
+    setTimeout(() => {
+        toast.remove();
+    }, 300);
+}
+
+function createToastContainer() {
+    const container = document.createElement('div');
+    container.id = 'toast-container';
+    document.body.appendChild(container);
+    return container;
+}
