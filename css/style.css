@@ -101,17 +101,17 @@ header .container nav{
 }
 .user{
     background-color:#fff;
-    /* padding: 10px px; */
+    padding: 4.3px 0px;
     border-radius: 50%;
     width: 40px;
     text-align: center;
     color: #fff;
     cursor: pointer;
-    box-shadow: #949393 0 2px 5px;
+    border: #00000021 1px solid;
 
 }
 .shoping{
-    background-color:var(--second-color);
+ 
     /* padding: 10px px; */
     border-radius: 50%;
     width: 40px;
@@ -120,6 +120,7 @@ header .container nav{
     cursor: pointer;
     position: relative;
     padding: 4px;
+    border: #00000021 1px solid;
 
 }
 .shoping::before{
@@ -139,11 +140,11 @@ header .container nav{
     font-weight: bold;
 }
 .shoping i{
-    font-size: 22px;
-    color: #fff;
+    font-size: 18px;
+    color: #000000;
 }
 .user i{
-    font-size: 27px;
+    font-size: 20px;
     color: #2d2b2b;
 }
 nav i{
