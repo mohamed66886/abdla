@@ -1,309 +1,365 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الصفحة الرئيسية - الركن الحضاري</title>
-    <!-- link_font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>الصفحة الرئيسية - الركن الحضاري</title>
     <meta name="description" content="متجر متخصص في بيع الأدوات الصحية والسيراميك بأفضل الأسعار. نوفر مغاسل سيراميك، مغاسل ديكور، كراسي حمام، شطافات، كبائن شاور، خلاطات، مغاطس، إكسسوارات الدش، مرايات، سخانات، سيفونات، وملحقات وقطع غيار. تسوق الآن!">
-    <!-- bootstrap -->
+    
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-        <!-- link_css -->
-         <link rel="stylesheet" href="css/style.css">
-
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="icon_whats">
-    <a href="https://api.whatsapp.com/send?phone=966536297906&text=اهلا%20وسهلا%20من%20قائمة%20الركن%20الحضاري">
+    <a href="https://api.whatsapp.com/send?phone=966536297906&text=اهلا%20وسهلا%20من%20قائمة%20الركن%20الحضاري" rel="noopener noreferrer">
       <i class="bi bi-whatsapp"></i>
-  </a>
-    </div>
+    </a>
+  </div>
+  
   <header>
-      <div class="container">
-        <div class="logo">
-          <img src="img/logo.png" alt="logo">
-         
-        </div>
-        <nav>
-          <div class="user"><i class="bi bi-person-fill"></i></div>
-          <div class="shoping"><i class="bi bi-cart-fill"></i></div>
-          <i class=" bi bi-list" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></i>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasRightLabel"> الركن الحضاري</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div class="container">
+      <div class="logo">
+        <img src="img/logo.png" alt="شعار الركن الحضاري" loading="lazy">
+      </div>
+      <nav>
+        <div class="user"><i class="bi bi-person-fill"></i></div>
+        <div class="shoping"><i class="bi bi-cart-fill"></i></div>
+
+        <i class="bi bi-list" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></i>
+        
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">الركن الحضاري</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body text-center">
+            <div class="user-avatar-container">
+              <i class="bi bi-person-circle display-3 text-primary" id="userAvatarIcon"></i>
             </div>
-            <div class="offcanvas-body text-center">
-                <!-- أيقونة بدلاً من الصورة -->
-                <i class="bi bi-person-circle display-3 text-primary"></i>
-        
-                <!-- زر تسجيل -->
-                <button class="btn  w-100 my-3">تسجيل</button>
-        
-                <!-- القائمة -->
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <li class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                       مغاسل ديكور
-                      </li>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body"><a href="">one</a>
-                        <a href="">two</a>
-                        <a href="">three</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <li class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                       خلاطات
-                      </li>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body"><a href="">one</a>
-                        <a href="">two</a>
-                        <a href="">three</a>   
-                      </div>           </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <li class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                       كراسي حمام
-                      </li>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body"><a href="">one</a>
-                        <a href="">two</a>
-                        <a href="">three</a>   
-                      </div>              </div>
+            <button class="btn w-100 my-3" id="userRegisterBtn">
+              تسجيل
+            </button>            
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <li class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    مغاسل ديكور
+                  </li>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <a href="products.html?category=decor-sinks">مغاسل حديثة</a>
+                    <a href="products.html?category=classic-sinks">مغاسل كلاسيكية</a>
+                    <a href="products.html?category=modern-sinks">مغاسل عصرية</a>
                   </div>
                 </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <li class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    خلاطات
+                  </li>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <a href="products.html?category=modern-faucets">خلاطات حديثة</a>
+                    <a href="products.html?category=classic-faucets">خلاطات كلاسيكية</a>
+                    <a href="products.html?category=smart-faucets">خلاطات ذكية</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <li class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    كراسي حمام
+                  </li>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <a href="products.html?category=standard-toilets">كراسي قياسية</a>
+                    <a href="products.html?category=smart-toilets">كراسي ذكية</a>
+                    <a href="products.html?category=wall-mounted">كراسي معلقة</a>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        
-        </nav>
-        
-        
+      </nav>
     </div>
+    
     <div class="navbot">
       <nav>
         <ul>
-          <li><a href="index.html">الصفحة الرئيسية</a></li>
+          <li><a href="index.html" class="active">الصفحة الرئيسية</a></li>
           <li><a href="about.html">من نحن</a></li>
-          <li><a href="services.html">المتناجات</a></li>
+          <li><a href="products.html">المنتجات</a></li>
           <li><a href="contact.html">اتصل بنا</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <div class="asd">
-    <div class="container">
-      <div class="test">
+  <main>
+    <section class="asd">
+      <div class="container">
+        <div class="test"></div>
+        <p>مؤسسة الركن الحضاري تهنئكم بحلول عيد الفطر المجيد</p>
       </div>
-      <p>مؤسسة الركن الحضاري تهنآكم بحلول عيد الفطر المجيد</p>
-    </div>
-  </div>
-  <div class="cards">
+    </section>
+    
+    <section class="cards">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/9RgN4a0ph7YeLCFW32GtDToa7wNaczwSU0kVJjHD.png');">
+              <div class="dark">
+                <h4>مغاسل ديكور</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/vACeKdu8qqt3U2g9KtwbGBOqzPbMtY6uS66atKdg.png');">
+              <div class="dark">
+                <h4>خلاطات</h4>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/8Ycm5VP15TGsuRVKQKZCOc0QXJ8zyQBVGyclTALU.png');">
+              <div class="dark">
+                <h4>كراسي حمام</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/fOLzp5c0dkfNn7bSp0PTRTl0DK01hC1TmzBQ6ECn.png')">
+              <div class="dark">
+                <h4>مرايات</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/SAQEx8GqnGfcjSf6wR6mOvkXRBXliqporqmnc6qr.png')">
+              <div class="dark">
+                <h4>سخانات وملحقات</h4>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/EvIloLDY87LvlQv3i8qNaWbCYAupjTGqZo47qgvP.png')">
+              <div class="dark">
+                <h4>خدمات التركيب</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('img/b2.jpeg')">
+              <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
+                <h4>بانيوهات وجواكيز</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('img/b3.jpeg')">
+              <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
+                <h4>شطافات</h4>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('img/b4.jpeg')">
+              <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
+                <h4>الاكسسوارات</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('img/b5.jpeg')">
+              <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
+                <h4>أدوات السباكة</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('img/b6.jpeg')">
+              <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
+                <h4>أحواض المطبخ</h4>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="card" style="background-image: url('img/b7.jpeg')">
+              <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
+                <h4>قريباً</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="goodsel">
+      <div class="container">
+        <div class="titleofgood">
+          <h1>مزايا الركن الحضاري</h1>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="good">
+              <i class="bi bi-buildings"></i>
+              <h2>تشكيلة هائلة من المنتجات</h2>
+              <p>تشكيلة هائلة من المنتجات يحتوي متجرنا على أضخم مجموعة من المنتجات الصحية</p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="good">
+              <i class="bi bi-shield-check"></i>
+              <h2>ضمان وجودة عالية</h2>
+              <p>ضمان على جميع المنتجات وخدمة ما بعد البيع</p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="good">
+              <i class="bi bi-cart-check"></i>
+              <h2>طلبات جمله</h2>
+              <p>طلبات جمله وتوصيل سريع</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/9RgN4a0ph7YeLCFW32GtDToa7wNaczwSU0kVJjHD.png');">
-                    <div class="dark">
-                        <h4>مغاسل ديكور</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/vACeKdu8qqt3U2g9KtwbGBOqzPbMtY6uS66atKdg.png');">
-                    <div class="dark">
-                        <h4>خلاطات</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/8Ycm5VP15TGsuRVKQKZCOc0QXJ8zyQBVGyclTALU.png');">
-                    <div class="dark">
-                        <h4>كراسي حمام</h4>
-                        
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <div class="row">
-          <div class="col-md-4">
-              <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/fOLzp5c0dkfNn7bSp0PTRTl0DK01hC1TmzBQ6ECn.png')">
-                  <div class="dark">
-                      <h4> مرايات</h4>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-md-4">
-              <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/SAQEx8GqnGfcjSf6wR6mOvkXRBXliqporqmnc6qr.png')">
-                  <div class="dark">
-                      <h4>سخانات و ملحقات</h4>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card" style="background-image: url('https://cdn.salla.sa/form-builder/EvIloLDY87LvlQv3i8qNaWbCYAupjTGqZo47qgvP.png')">
-                  <div class="dark">
-                      <h4>خدمات التركيب </h4>
-                      
-                  </div>
-              </div>
-          </div>
-      </div> 
       <div class="row">
         <div class="col-md-4">
-            <div class="card" style="background-image: url('img/b2.jpeg')">
-                <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
-                    <h4> بانيوهات وجواكيز</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card" style="background-image: url('img/b3.jpeg')">
-            <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
-                    <h4> شطافات </h4>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="background-image: url('img/b4.jpeg')">
-            <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
-                    <h4>الاكسسوارات  </h4>
-                    
-                </div>
-            </div>
-        </div>
-    </div> 
-    <div class="row">
-      <div class="col-md-4">
-          <div class="card" style="background-image: url('img/b5.jpeg')">
-              <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
-                  <h4>  أدوات السباكة</h4>
-              </div>
-          </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card" style="background-image: url('img/b6.jpeg')">
-          <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
-                  <h4> أحواض المطبخ </h4>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card" style="background-image: url('img/b7.jpeg')">
-          <div class="dark" style="background-color: #2f3444; opacity: 0.7;">
-                  <h4>قريبا  </h4>
-              </div>
-          </div>
-      </div>
-  </div> 
-  </div>
-</div>
-<div class="goodsel">
-  <div class="container">
-    <div class="titleofgood">
-      <h2> مزايا الركن الحضاري </h2>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="good">
-          <i class="bi bi-buildings"></i>
-          <h2>تشكيلة هائلة من المنتجات          </h2>
-           <p>تشكيلة هائلة من المنتجات يحتوي متجرنا على أضخم مجموعة من المنتجات الصحية           </p>
-
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="good">
-          <i class="bi bi-shield-check"></i>
-          <h2>ضمان و جودة عالية          </h2>
-<p>ضمان على جميع المنتجات و خدمة ما بعد البيع</p>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="good">
-          <i class="bi bi-cart-check"></i>
-          <h2>طلبات جمله</h2> 
-          <p>طلبات جمله و توصيل سريع</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<footer>
-  <div class="container">
-
-    <div class="row">
-      <div class="col-md-4">
-        <h2>من نحن</h2>
-<p>متجر متخصص ببيع الأدوات الصحية و السيراميك مغاسل سيراميك - مغاسل ديكور - كراسي حمام - شطافات - كبائن شاور - خلاطات - مغاطس و جواكيز - اكسسوارات الدش - مرايات - سخانات - سيفونات - ملحقات و قطع غيار..</p>        <ul>
-          <li><a href="#"><i class="bi bi-whatsapp"></i> واتساب</a></li>
-          <li><a href="#"><i class="bi bi-phone"></i>جوال</a></li>
-          <li><a href="#"><i class="bi bi-telephone-fill"></i>هاتف</a></li>
-
-        </ul>
-        <div class="numid"><i class="bi bi-receipt-cutoff"></i> <p>رقم الضريبي: 966536297906</p></div>
-      </div>
-      <div class="col-md-4">
-        <div class="links">
-          <h2>روابط سريعة</h2>
-       <a href="index.html">المدونه</a>
-         <a href="about.html"> الاستخدام و الخصوصية</a>
-           <a href="services.html">الاسترجاع والاستبدال و التوصيل</a>
-      
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="contact">
-          <h2>تواصل معنا</h2>
+          <h2>من نحن</h2>
+          <p>متجر متخصص ببيع الأدوات الصحية والسيراميك مغاسل سيراميك - مغاسل ديكور - كراسي حمام - شطافات - كبائن شاور - خلاطات - مغاطس وجواكيز - اكسسوارات الدش - مرايات - سخانات - سيفونات - ملحقات وقطع غيار..</p>
           <ul>
-            <li><a href="#"><i class="bi bi-whatsapp"></i></a></li>
-            <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-            <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-            <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+            <li><a href="https://wa.me/966536297906" rel="noopener noreferrer"><i class="bi bi-whatsapp"></i> واتساب</a></li>
+            <li><a href="tel:+966536297906"><i class="bi bi-phone"></i> جوال</a></li>
+            <li><a href="tel:+966536297906"><i class="bi bi-telephone-fill"></i> هاتف</a></li>
           </ul>
+          <div class="numid"><i class="bi bi-receipt-cutoff"></i> <p>رقم الضريبي: 966536297906</p></div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="links">
+            <h2>روابط سريعة</h2>
+            <a href="blog.html">المدونة</a>
+            <a href="privacy.html">الاستخدام والخصوصية</a>
+            <a href="return-policy.html">الاسترجاع والاستبدال والتوصيل</a>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="contact">
+            <h2>تواصل معنا</h2>
+            <ul>
+              <li><a href="https://wa.me/966536297906" rel="noopener noreferrer"><i class="bi bi-whatsapp"></i></a></li>
+              <li><a href="https://facebook.com" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a></li>
+              <li><a href="https://instagram.com" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a></li>
+              <li><a href="https://linkedin.com" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <div class="botomfooter">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>جميع الحقوق محفوظة 2025 | محمد رشاد</p>
+        </div>
+        <div class="col-md-6">
+          <div class="social">
+            <a href="https://facebook.com" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
+            <a href="https://twitter.com" rel="noopener noreferrer"><i class="bi bi-twitter"></i></a>
+            <a href="https://wa.me/966536297906" rel="noopener noreferrer"><i class="bi bi-whatsapp"></i></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</footer>
-<div class="botomfooter">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <p>جميع الحقوق محفوظة 2025 | محمد رشاد</p>
+
+  <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">تسجيل المستخدم</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="col-md-6">
-        <div class="social">
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-twitter"></i></a>
-          <a href="#"><i class="bi bi-whatsapp"></i></a>
-        </div>
+      <div class="modal-body">
+        <form id="registerForm">
+          <div class="mb-3 text-center">
+            <div class="avatar-upload">
+              <div class="avatar-edit">
+                <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                <label for="imageUpload"><i class="bi bi-camera-fill"></i></label>
+              </div>
+              <div class="avatar-preview">
+                <div id="imagePreview" style="background-image: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png');">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="userName" class="form-label">الاسم الكامل</label>
+            <input type="text" class="form-control" id="userName" required>
+          </div>
+          <div class="mb-3">
+            <label for="phoneNumber" class="form-label">رقم الهاتف</label>
+            <input type="tel" class="form-control" id="phoneNumber" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+        <button type="button" class="btn btn-primary" id="saveUserBtn">حفظ</button>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
- 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
