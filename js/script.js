@@ -139,19 +139,22 @@ function getUserData() {
     return userData ? JSON.parse(userData) : null;
 }
 
+
 function loadUserData() {
     const userData = getUserData();
     if (userData) {
-        updateUserUI(userData);
+        updateUserUI(userData); // هذا سيحدث كل العناصر بما فيها أيقونة الهيدر
     }
 }
 
 function updateUserUI(userData) {
+    updateHeaderUserIcon(userData); // تحديث أيقونة الهيدر
+    
     const registerBtn = document.getElementById('userRegisterBtn');
     const userAvatarIcon = document.getElementById('userAvatarIcon');
     
     if (userData) {
-        // تحديث زر التسجيل
+        // تحديث زر التسجيل في القائمة الجانبية
         if (registerBtn) {
             registerBtn.innerHTML = `
                 <img src="${userData.avatar}" class="user-avatar-img" alt="صورة المستخدم">
@@ -160,7 +163,7 @@ function updateUserUI(userData) {
             registerBtn.classList.add('user-logged-in');
         }
         
-        // تحديث أيقونة المستخدم
+        // تحديث الأيقونة الكبيرة في القائمة الجانبية
         if (userAvatarIcon) {
             userAvatarIcon.style.backgroundImage = `url(${userData.avatar})`;
             userAvatarIcon.classList.add('avatar-has-image');
@@ -176,6 +179,24 @@ function updateUserUI(userData) {
             userAvatarIcon.style.backgroundImage = '';
             userAvatarIcon.classList.remove('avatar-has-image');
         }
+    }
+}
+function updateHeaderUserIcon(userData) {
+    const userIconContainer = document.querySelector('.user');
+    if (!userIconContainer) return;
+    
+    if (userData && userData.avatar) {
+        // إذا كان المستخدم مسجلاً ولديه صورة
+        userIconContainer.innerHTML = `
+            <img src="${userData.avatar}" class="user-avatar-img" alt="صورة المستخدم">
+        `;
+        userIconContainer.classList.add('user-has-avatar');
+    } else {
+        // إذا لم يكن مسجلاً أو ليس لديه صورة
+        userIconContainer.innerHTML = `
+            <i class="bi bi-person-fill"></i>
+        `;
+        userIconContainer.classList.remove('user-has-avatar');
     }
 }
 
