@@ -71,9 +71,8 @@ header{
     position: sticky;
     top: 0;
     z-index: 999;
-
-    font-weight: bold;
     color: var(--text-color);
+    box-shadow: #0000001f 0px 2px 4px 0px;
 }
 header .container{
     display: flex;
@@ -162,9 +161,7 @@ nav i{
 
 .navbot{
 
-    background-color:#fff ;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 999;
+
     width: 100%;
 }
 
@@ -228,6 +225,34 @@ nav .bi-list{
 .offcanvas-end{
     width: 300px !important;
 }
+.accordion-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.accordion-body a{
+    text-decoration: none;
+    color: var(--text-color);
+    transition: var(--main-duration);
+    display: block;
+    margin: 10px 0;
+    text-align: right;
+}
+.accordion-button::after{
+    flex-shrink: 0;
+    width: var(--bs-accordion-btn-icon-width);
+    height: var(--bs-accordion-btn-icon-width);
+    margin-right: auto;
+    margin-left: 0;
+    content: "";
+    background-image: var(--bs-accordion-btn-icon);
+    background-repeat: no-repeat;
+    background-size: var(--bs-accordion-btn-icon-width);
+    transition: var(--bs-accordion-btn-icon-transition);
+}
+.accordion-body a:hover{
+    color: var(--main-color);
+}
 .active{
  color: var(--main-color);
 }
@@ -236,7 +261,7 @@ end header
 ================================================= */
 .asd{
     background-color: #fff;
-    padding: 40px 20px;
+    padding: 80px 20px;
    text-align: center;
     margin: 0  0 20px 0;
 
@@ -395,7 +420,6 @@ footer .container .row .col-md-4 ul li a i{
 
     header .container .logo img{
         width: 120px;
-        margin: 10px auto;
     }
 
     header .container nav ul{
@@ -424,6 +448,9 @@ footer .container .row .col-md-4 ul li a i{
         }
         .navbot{
             display: none;
+        }
+        .asd{
+            padding: 40px 20px;
         }
 
 }
