@@ -554,6 +554,7 @@ nav .bi-list{
     align-items: center;
     justify-content: center;
     gap: 8px;
+    color: #000;
     background-color: #fff;
     padding: 10px;
   }
