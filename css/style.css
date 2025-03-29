@@ -324,12 +324,13 @@ nav .bi-list{
     margin: 0  0 20px 0;
 }
 
-.col-md-4 .card{
+.cards .container .row .col-md-4 .card{
     border-radius: 10px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
+    height: 234px;
     background-size: cover;
     background-position: center;
     margin: 10px 0;
