@@ -66,7 +66,6 @@ header{
     position: sticky;
     top: 0;
     z-index: 999;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
     font-weight: bold;
     color: var(--text-color);
@@ -79,6 +78,7 @@ header .container{
 header .container .logo img{
     width: 180px;
 }
+
 header .container nav ul{
     display: flex;
     list-style: none;
@@ -94,11 +94,92 @@ header .container nav ul li a{
 header .container nav ul li a:hover{
     color: var(--main-color);
 }
+header .container nav{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.user{
+    background-color:#fff;
+    /* padding: 10px px; */
+    border-radius: 50%;
+    width: 40px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: #949393 0 2px 5px;
+
+}
+.shoping{
+    background-color:var(--second-color);
+    /* padding: 10px px; */
+    border-radius: 50%;
+    width: 40px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    padding: 4px;
+
+}
+.shoping::before{
+    content: "0";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--main-color);
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+.shoping i{
+    font-size: 22px;
+    color: #fff;
+}
+.user i{
+    font-size: 27px;
+    color: #2d2b2b;
+}
 nav i{
     font-size: 27px;
     color: var(--main-color);
     font-weight: bold;
     cursor: pointer;
+
+}
+
+.navbot{
+
+    background-color:#fff ;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    width: 100%;
+}
+
+.navbot ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+    padding: 10px 0;
+}
+.navbot ul li a{
+    text-decoration: none;
+    color: var(--text-color);
+    transition: var(--main-duration);
+}
+.navbot ul li a:hover{
+    color: var(--main-color);
+}
+
+nav .bi-list{
     display: none;
 }
 .offcanvas-header .btn-close {
@@ -302,6 +383,7 @@ footer .container .row .col-md-4 ul li a i{
     header{
         padding: 10px 20px;
         font-size: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     
     }
 
@@ -333,6 +415,9 @@ footer .container .row .col-md-4 ul li a i{
         }
         .botomfooter{
             text-align: center;
+        }
+        .navbot{
+            display: none;
         }
 
 }
