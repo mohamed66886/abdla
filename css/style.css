@@ -35,7 +35,9 @@ body{
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: var(--main-duration);
+    animation: bounce 1.5s infinite;
 }
+
 .icon_whats a{
     color: #fff;
     text-decoration: none;
@@ -43,6 +45,17 @@ body{
 }
 .icon_whats:hover{
     transform: scale(1.1);
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
 header{
     background-color: #fff;
