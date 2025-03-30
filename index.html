@@ -39,6 +39,7 @@
       <div class="logo">
         <img src="img/logo.png" alt="شعار الركن الحضاري" loading="lazy">
       </div>
+      
       <nav>
         <div class="user" ><i class="bi bi-person-fill"></i></div>
         <div class="shoping"><i class="bi bi-cart-fill"></i></div>
@@ -114,16 +115,109 @@
     </div>
     
     <div class="navbot">
+      <div class="container">
       <nav>
-        <ul>
-          <li><a href="index.html" class="active">الصفحة الرئيسية</a></li>
-          <li><a href="about.html">من نحن</a></li>
-          <li><a href="products.html">المنتجات</a></li>
-          <li><a href="contact.html">اتصل بنا</a></li>
-        </ul>
+        <div class="dropdown">
+          <button class="  dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+            مغاسل ديكور
+        </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">مغاسل ديكور</a></li>
+            <li><a class="dropdown-item" href="#">مغاسل ديكور</a></li>
+            <li><a class="dropdown-item" href="#">مغاسل ديكور</a></li>
+          </ul>
+          
+        </div>
+        <div class="dropdown">
+          <button class="  dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+           خلاطات 
+        </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">خلاطات</a></li>
+            <li><a class="dropdown-item" href="#">خلاطات action</a></li>
+            <li><a class="dropdown-item" href="#">خلاطات else here</a></li>
+          </ul>
+          
+        </div>
+        <div class="dropdown">
+          <button class="  dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+كراسي حمام        </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">كراسي حمام</a></li>
+            <li><a class="dropdown-item" href="#">كراسي action</a></li>
+            <li><a class="dropdown-item" href="#">كراسي else here</a></li>
+          </ul>
+          
+        </div>
+        <div class="dropdown">
+          <button class="  dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+          مرايات
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">مرايات</a></li>
+            <li><a class="dropdown-item" href="#"> مرايات </a></li>
+            <li><a class="dropdown-item" href="#">  مرايات  </a></li>
+          </ul>
+          
+        </div>
+        <div class="dropdown">
+          <button class="  dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+           سخانات
+        </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">سخانات</a></li>
+            <li><a class="dropdown-item" href="#">سخانات</a></li>
+            <li><a class="dropdown-item" href="#">سخانات</a></li>
+          </ul>
+          
+        </div>
+        <div class="dropdown">
+          <button class="  dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+           الاكسسوارات
+        </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">الاكسسوارات</a></li>
+            <li><a class="dropdown-item" href="#">الاكسسوارات</a></li>
+            
+            <li><a class="dropdown-item" href="#"> الاكسسوارات</a></li>
+          </ul>
+          
+        </div>
+        
+        
       </nav>
+      <div class="headerlog">
+        <button class="my-3" id="headeruserRegisterBtn" data-bs-toggle="modal" data-bs-target="#registerModal">
+          تسجيل
+        </button>
+        <button class="my-3" id="headeruserLogoutBtn">
+          حذف البيانات
+        </button>
+      </div>
     </div>
+  </div>
   </header>
+  <section class="search-section py-3 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="form-control form-control-lg" 
+                        placeholder="ابحث عن مغاسل، خلاطات، أدوات صحية..." 
+                        aria-label="Search"
+                    >
+                    <button class="btn btn-primary" type="button" id="searchButton">
+                        <i class="bi bi-search"></i> بحث
+                    </button>
+                </div>
+                <div id="searchResults" class="mt-3 bg-white rounded shadow d-none"></div>
+            </div>
+        </div>
+    </div>
+</section>
 
   <main>
     <section class="asd">
@@ -273,7 +367,20 @@
         </div>
       </div>
     </section>
+
   </main>
+  <section class="featured-products py-5 bg-light">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title">منتجات مميزة</h2>
+            <a href="products.html?category=featured" class="btn btn-outline-primary">عرض الكل</a>
+        </div>
+        
+        <div class="row" id="featuredProductsContainer">
+            <!-- سيتم ملؤها جافاسكريبت -->
+        </div>
+    </div>
+</section>
 
   <footer>
     <div class="container">
@@ -374,6 +481,7 @@
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="js/main2.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     AOS.init();

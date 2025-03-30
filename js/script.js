@@ -34,6 +34,9 @@ function initPage() {
     
     // Setup product add-to-cart events
     setupProductEvents();
+
+        // Setup navbot buttons
+        setupNavbotButtons();
 }
 
 // ==================== User Registration System ====================
@@ -185,11 +188,13 @@ function updateUserUI(userData) {
     updateHeaderUserIcon(userData); // Update header icon
     
     const registerBtn = document.getElementById('userRegisterBtn');
+    const headerRegisterBtn = document.getElementById('headeruserRegisterBtn');
     const userAvatarIcon = document.getElementById('userAvatarIcon');
     const logoutBtn = document.getElementById('userLogoutBtn');
+    const headerLogoutBtn = document.getElementById('headeruserLogoutBtn');
     
     if (userData) {
-        // Update registration button in sidebar
+        // Update registration button in sidebar (مع الصورة)
         if (registerBtn) {
             registerBtn.innerHTML = `
                 <img src="${userData.avatar}" class="user-avatar-img" alt="User profile">
@@ -198,16 +203,23 @@ function updateUserUI(userData) {
             registerBtn.classList.add('user-logged-in');
         }
         
+        // Update registration button in navbot (الاسم فقط بدون صورة)
+        if (headerRegisterBtn) {
+            headerRegisterBtn.innerHTML = `
+                <span class="user-name">${userData.name}</span>
+            `;
+            headerRegisterBtn.classList.add('user-logged-in');
+        }
+        
         // Update large icon in sidebar
         if (userAvatarIcon) {
             userAvatarIcon.style.backgroundImage = `url(${userData.avatar})`;
             userAvatarIcon.classList.add('avatar-has-image');
         }
         
-        // Show logout button
-        if (logoutBtn) {
-            logoutBtn.style.display = 'block';
-        }
+        // Show logout buttons
+        if (logoutBtn) logoutBtn.style.display = 'block';
+        if (headerLogoutBtn) headerLogoutBtn.style.display = 'block';
     } else {
         // Reset if not logged in
         if (registerBtn) {
@@ -215,15 +227,19 @@ function updateUserUI(userData) {
             registerBtn.classList.remove('user-logged-in');
         }
         
+        if (headerRegisterBtn) {
+            headerRegisterBtn.innerHTML = 'تسجيل';
+            headerRegisterBtn.classList.remove('user-logged-in');
+        }
+        
         if (userAvatarIcon) {
             userAvatarIcon.style.backgroundImage = '';
             userAvatarIcon.classList.remove('avatar-has-image');
         }
         
-        // Hide logout button
-        if (logoutBtn) {
-            logoutBtn.style.display = 'none';
-        }
+        // Hide logout buttons
+        if (logoutBtn) logoutBtn.style.display = 'none';
+        if (headerLogoutBtn) headerLogoutBtn.style.display = 'none';
     }
 }
 
@@ -449,4 +465,50 @@ function createToastContainer() {
     container.id = 'toast-container';
     document.body.appendChild(container);
     return container;
+}
+function setupNavbotButtons() {
+    // Handle register button in navbot
+    const headerRegisterBtn = document.getElementById('headeruserRegisterBtn');
+    const headerLogoutBtn = document.getElementById('headeruserLogoutBtn');
+    
+    if (headerRegisterBtn) {
+        headerRegisterBtn.addEventListener('click', function() {
+            const userData = getUserData();
+            
+            if (userData) {
+                // If user is registered, show their data
+                document.getElementById('userName').value = userData.name;
+                document.getElementById('phoneNumber').value = userData.phone;
+                document.getElementById('imagePreview').style.backgroundImage = `url(${userData.avatar})`;
+            } else {
+                // If not registered, reset form fields
+                resetRegisterForm();
+            }
+        });
+    }
+    
+    // Handle logout button in navbot
+    if (headerLogoutBtn) {
+        // Initially hide the logout button if no user is logged in
+        const userData = getUserData();
+        headerLogoutBtn.style.display = userData ? 'block' : 'none';
+        
+        headerLogoutBtn.addEventListener('click', function() {
+            // Clear user data from localStorage
+            localStorage.removeItem('userData');
+            
+            // Update UI
+            updateUserUI(null);
+            
+            // Hide the logout button in both places
+            headerLogoutBtn.style.display = 'none';
+            const sidebarLogoutBtn = document.getElementById('userLogoutBtn');
+            if (sidebarLogoutBtn) {
+                sidebarLogoutBtn.style.display = 'none';
+            }
+            
+            // Show success message
+            showToast('تم حذف البيانات بنجاح', 'success');
+        });
+    }
 }

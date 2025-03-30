@@ -3,7 +3,7 @@
     --second-color:#2a2a5f;
     --third-color:#3675eb;
     --section-padding:60px;
-    --section-background:#ffffff;
+    --section-background:#f8f9fa;
     --section2-background:#ebeaea;
     --text-color:#2a2a5f;
     --text-color-light:#f7f7f7;
@@ -43,6 +43,20 @@ body{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: var(--main-duration);
     animation: bounce 1.5s infinite;
+}
+.input-group{
+    position: relative;
+    display: flex
+;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.5rem
+}
+.input-group .btn{
+    background-color: var(--second-color);
+    color: #fff;
+    border-radius: 10px !important;
 }
 .user-avatar-img {
     width: 30px;
@@ -108,23 +122,11 @@ header .container .logo img{
     loading: lazy;
 }
 
-header .container nav ul{
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 20px;
-}
 
-header .container nav ul li a{
-    text-decoration: none;
-    color: var(--text-color);
-    transition: var(--main-duration);
-}
 
-header .container nav ul li a:hover{
-    color: var(--main-color);
-}
+
+
+
 
 header .container nav{
     display: flex;
@@ -147,7 +149,8 @@ header .container nav{
 }
 .user-has-avatar {
     padding: 0;
-    border: 2px solid var(--main-color);
+    /* border: 2px solid var(--main-color); */
+    
 }
 .user-has-avatar .user-avatar-img {
     width: 100%;
@@ -205,34 +208,79 @@ nav i{
     font-weight: bold;
     cursor: pointer;
 }
-
 .navbot{
     width: 100%;
+    border-top: #00000021 1px solid;
+    margin: 17px 0 0;
+    ;
 }
 
-.navbot ul{
+.navbot .container{
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
+}
+.navbot nav{
+    display: flex;
     justify-content: center;
-    list-style: none;
-    gap: 20px;
-    padding: 10px 0;
+    align-items: center;
+    padding: 0 10px ;
+    gap: 10px;
 }
-
-.navbot ul li a{
-    text-decoration: none;
-    color: var(--text-color);
-    transition: var(--main-duration);
+.navbot nav .dropdown button{
+    background-color: #fff;
+    border: none;
+    font-size: 16px;
+    
 }
-
-.navbot ul li a:hover{
+.navbot nav .dropdown button:hover{
     color: var(--main-color);
 }
-
+.headerlog{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.headerlog button{
+    background-color: var(--second-color) !important;
+    color: var(--section-background) !important;
+    border: none !important;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 nav .bi-list{
     display: none;
 }
+/* أنماط شريط البحث */
+.search-section {
+    border-bottom: 1px solid #eee;
+}
 
+#searchResults {
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    transition: all 0.2s;
+    color: #333;
+    text-decoration: none;
+}
+
+.search-result-item:hover {
+    background-color: #f8f9fa;
+}
+
+.search-result-item img {
+    object-fit: cover;
+    border-radius: 4px;
+}
 .offcanvas-header .btn-close {
     margin: 0 43% 0 0 !important;
 }
@@ -581,6 +629,46 @@ nav .bi-list{
     font-weight: bold;
     color: var(--text-color);
   }
+  /* أنماط المنتجات المميزة */
+.featured-products {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.product-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-card .badge {
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+.product-price .current-price {
+    font-weight: bold;
+    color: #0d6efd;
+    font-size: 1.1rem;
+}
+
+.product-price .old-price {
+    text-decoration: line-through;
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-right: 5px;
+}
+
+.product-rating {
+    color: #ffc107;
+    font-size: 0.9rem;
+}
 footer{
     background-color: var(--second-color);
     color: #fff;
@@ -864,5 +952,9 @@ font-size: 18px;
     
     .asd{
         padding: 40px 20px;
+    }
+    .input-group input{
+
+  font-size: 16px; 
     }
 }
