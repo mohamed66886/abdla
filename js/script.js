@@ -1,38 +1,39 @@
+
 document.addEventListener('DOMContentLoaded', function() {
-    // تهيئة الصفحة عند التحميل
+    // Initialize the page when loaded
     initPage();
 });
 
 function initPage() {
-    // تحميل بيانات المستخدم
+    // Load user data
     loadUserData();
     
-    // تهيئة عداد عربة التسوق
+    // Initialize shopping cart counter
     updateCartCounter();
     
-    // تهيئة تأثيرات البطاقات
+    // Initialize card hover effects
     initCardHoverEffects();
     
-    // تهيئة القائمة المتنقلة
+    // Setup mobile menu
     setupMobileMenu();
     
-    // حماية الصور من النقر الأيمن
+    // Protect images from right-click
     disableImageRightClick();
     
-    // تهيئة التمرير السلس
+    // Setup smooth scrolling
     setupSmoothScrolling();
     
-    // تهيئة مودال التسجيل
+    // Setup registration modal
     setupRegisterModal();
     
-    // تهيئة زر واتساب
+    // Setup WhatsApp button
     setupWhatsAppButton();
     
-    // تهيئة أحداث إضافة المنتجات للسلة
+    // Setup product add-to-cart events
     setupProductEvents();
 }
 
-// ==================== نظام تسجيل المستخدم ====================
+// ==================== User Registration System ====================
 
 function setupRegisterModal() {
     const registerBtn = document.getElementById('userRegisterBtn');
@@ -42,18 +43,18 @@ function setupRegisterModal() {
     const imagePreview = document.getElementById('imagePreview');
     const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
     
-    // فتح مودال التسجيل
+    // Open registration modal
     if (registerBtn) {
         registerBtn.addEventListener('click', function() {
             const userData = getUserData();
             
             if (userData) {
-                // إذا كان مستخدم مسجل، عرض بياناته
+                // If user is registered, show their data
                 document.getElementById('userName').value = userData.name;
                 document.getElementById('phoneNumber').value = userData.phone;
                 imagePreview.style.backgroundImage = `url(${userData.avatar})`;
             } else {
-                // إذا كان غير مسجل، إعادة تعيين الحقول
+                // If not registered, reset form fields
                 resetRegisterForm();
             }
             
@@ -61,7 +62,7 @@ function setupRegisterModal() {
         });
     }
     
-    // إدارة اختيار الصورة
+    // Handle image selection
     if (imageUpload) {
         imageUpload.addEventListener('change', function(e) {
             if (e.target.files && e.target.files[0]) {
@@ -74,7 +75,7 @@ function setupRegisterModal() {
         });
     }
     
-    // حفظ بيانات المستخدم
+    // Save user data
     if (saveBtn) {
         saveBtn.addEventListener('click', function() {
             const name = document.getElementById('userName').value.trim();
@@ -91,12 +92,12 @@ function setupRegisterModal() {
                 saveUserData(userData);
                 updateUserUI(userData);
                 registerModal.hide();
-                showToast('تم حفظ بياناتك بنجاح', 'success');
+                showToast('Your data has been saved successfully', 'success');
             }
         });
     }
     
-    // إلغاء التسجيل
+    // Cancel registration
     if (cancelBtn) {
         cancelBtn.addEventListener('click', function() {
             resetRegisterForm();
@@ -106,17 +107,17 @@ function setupRegisterModal() {
 
 function validateUserData(name, phone) {
     if (!name) {
-        showToast('الرجاء إدخال الاسم الكامل', 'error');
+        showToast('Please enter your full name', 'error');
         return false;
     }
     
     if (!phone) {
-        showToast('الرجاء إدخال رقم الهاتف', 'error');
+        showToast('Please enter your phone number', 'error');
         return false;
     }
     
     if (!/^[0-9]{10,15}$/.test(phone)) {
-        showToast('رقم الهاتف غير صحيح', 'error');
+        showToast('Invalid phone number format', 'error');
         return false;
     }
     
@@ -139,39 +140,38 @@ function getUserData() {
     return userData ? JSON.parse(userData) : null;
 }
 
-
 function loadUserData() {
     const userData = getUserData();
     if (userData) {
-        updateUserUI(userData); // هذا سيحدث كل العناصر بما فيها أيقونة الهيدر
+        updateUserUI(userData); // This will update all elements including the header icon
     }
 }
 
 function updateUserUI(userData) {
-    updateHeaderUserIcon(userData); // تحديث أيقونة الهيدر
+    updateHeaderUserIcon(userData); // Update header icon
     
     const registerBtn = document.getElementById('userRegisterBtn');
     const userAvatarIcon = document.getElementById('userAvatarIcon');
     
     if (userData) {
-        // تحديث زر التسجيل في القائمة الجانبية
+        // Update registration button in sidebar
         if (registerBtn) {
             registerBtn.innerHTML = `
-                <img src="${userData.avatar}" class="user-avatar-img" alt="صورة المستخدم">
+                <img src="${userData.avatar}" class="user-avatar-img" alt="User profile">
                 <span class="user-name">${userData.name}</span>
             `;
             registerBtn.classList.add('user-logged-in');
         }
         
-        // تحديث الأيقونة الكبيرة في القائمة الجانبية
+        // Update large icon in sidebar
         if (userAvatarIcon) {
             userAvatarIcon.style.backgroundImage = `url(${userData.avatar})`;
             userAvatarIcon.classList.add('avatar-has-image');
         }
     } else {
-        // إعادة تعيين إذا لم يكن مسجلاً
+        // Reset if not logged in
         if (registerBtn) {
-            registerBtn.innerHTML = 'تسجيل الدخول';
+            registerBtn.innerHTML = 'Login';
             registerBtn.classList.remove('user-logged-in');
         }
         
@@ -181,18 +181,19 @@ function updateUserUI(userData) {
         }
     }
 }
+
 function updateHeaderUserIcon(userData) {
     const userIconContainer = document.querySelector('.user');
     if (!userIconContainer) return;
     
     if (userData && userData.avatar) {
-        // إذا كان المستخدم مسجلاً ولديه صورة
+        // If user is registered and has an avatar
         userIconContainer.innerHTML = `
-            <img src="${userData.avatar}" class="user-avatar-img" alt="صورة المستخدم">
+            <img src="${userData.avatar}" class="user-avatar-img" alt="User profile">
         `;
         userIconContainer.classList.add('user-has-avatar');
     } else {
-        // إذا لم يكن مسجلاً أو ليس لديه صورة
+        // If not registered or no avatar
         userIconContainer.innerHTML = `
             <i class="bi bi-person-fill"></i>
         `;
@@ -200,7 +201,7 @@ function updateHeaderUserIcon(userData) {
     }
 }
 
-// ==================== نظام عربة التسوق ====================
+// ==================== Shopping Cart System ====================
 
 function updateCartCounter() {
     const cart = getCart();
@@ -230,7 +231,7 @@ function addToCart(productId, productName, price = 0) {
     
     saveCart(cart);
     updateCartCounter();
-    showToast(`تم إضافة ${productName} إلى السلة`, 'success');
+    showToast(`${productName} added to cart`, 'success');
 }
 
 function removeFromCart(productId) {
@@ -248,7 +249,7 @@ function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// ==================== تأثيرات الواجهة ====================
+// ==================== UI Effects ====================
 
 function initCardHoverEffects() {
     const cards = document.querySelectorAll('.product-card');
@@ -280,7 +281,7 @@ function disableImageRightClick() {
     document.querySelectorAll('img:not(.allow-right-click)').forEach(img => {
         img.addEventListener('contextmenu', function(e) {
             e.preventDefault();
-            showToast('حفظ الصور غير متاح', 'info');
+            showToast('Image saving is not allowed', 'info');
         });
     });
 }
@@ -302,7 +303,7 @@ function setupSmoothScrolling() {
     });
 }
 
-// ==================== تكامل واتساب ====================
+// ==================== WhatsApp Integration ====================
 
 function setupWhatsAppButton() {
     const whatsappBtn = document.querySelector('.whatsapp-button');
@@ -310,16 +311,16 @@ function setupWhatsAppButton() {
     if (whatsappBtn) {
         whatsappBtn.addEventListener('click', function() {
             const userData = getUserData();
-            let message = 'مرحباً، أنا مهتم بالمنتجات لديكم';
+            let message = 'Hello, I\'m interested in your products';
             
             if (userData) {
-                message += `\n\nالاسم: ${userData.name}`;
-                message += `\nالهاتف: ${userData.phone}`;
+                message += `\n\nName: ${userData.name}`;
+                message += `\nPhone: ${userData.phone}`;
             }
             
             const cart = getCart();
             if (cart.length > 0) {
-                message += '\n\nالمنتجات المختارة:';
+                message += '\n\nSelected products:';
                 cart.forEach(item => {
                     message += `\n- ${item.name} (${item.quantity}x)`;
                 });
@@ -333,10 +334,10 @@ function setupWhatsAppButton() {
     }
 }
 
-// ==================== إدارة المنتجات ====================
+// ==================== Product Management ====================
 
 function setupProductEvents() {
-    // إضافة منتجات للسلة
+    // Add products to cart
     document.querySelectorAll('.add-to-cart').forEach(btn => {
         btn.addEventListener('click', function() {
             const productId = this.dataset.productId;
@@ -347,7 +348,7 @@ function setupProductEvents() {
         });
     });
     
-    // عرض تفاصيل المنتج
+    // Show product details
     document.querySelectorAll('.view-product').forEach(btn => {
         btn.addEventListener('click', function() {
             const productId = this.dataset.productId;
@@ -357,11 +358,11 @@ function setupProductEvents() {
 }
 
 function showProductDetails(productId) {
-    // هنا يمكن جلب تفاصيل المنتج من قاعدة البيانات أو مصدر البيانات
-    console.log('عرض تفاصيل المنتج:', productId);
+    // Here you would fetch product details from database or data source
+    console.log('Showing product details:', productId);
 }
 
-// ==================== نظام الإشعارات ====================
+// ==================== Notification System ====================
 
 function showToast(message, type = 'info') {
     const toastContainer = document.getElementById('toast-container') || createToastContainer();
@@ -375,17 +376,17 @@ function showToast(message, type = 'info') {
     
     toastContainer.appendChild(toast);
     
-    // إظهار الإشعار
+    // Show the toast
     setTimeout(() => {
         toast.classList.add('show');
     }, 100);
     
-    // إغلاق الإشعار عند النقر
+    // Close toast on click
     toast.querySelector('.toast-close').addEventListener('click', () => {
         hideToast(toast);
     });
     
-    // إخفاء الإشعار تلقائياً بعد 5 ثواني
+    // Auto-hide after 5 seconds
     setTimeout(() => {
         hideToast(toast);
     }, 5000);
