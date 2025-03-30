@@ -15,7 +15,9 @@
     --main-duration:0.3s;
     --gray-color: #808080;
 }
-
+.container{
+    overflow: hidden;
+}
 body{
     font-family: 'Cairo', sans-serif;
     margin: 0;
