@@ -369,9 +369,12 @@ nav .bi-list{
 
 .asd{
     background-color: #fff;
-    padding: 80px 20px;
+    padding:20px;
     text-align: center;
     margin: 0  0 20px 0;
+}
+.asd .container p{
+   margin: 10px 0 0 0;
 }
 
 .cards .container .row .col-md-4 .card{
