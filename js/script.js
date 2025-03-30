@@ -26,6 +26,9 @@ function initPage() {
     // Setup registration modal
     setupRegisterModal();
     
+    // Setup logout button
+    setupLogoutButton();
+    
     // Setup WhatsApp button
     setupWhatsAppButton();
     
@@ -123,6 +126,37 @@ function validateUserData(name, phone) {
     
     return true;
 }
+// ==================== Logout Functionality ====================
+
+function setupLogoutButton() {
+    const logoutBtn = document.getElementById('userLogoutBtn');
+    
+    if (logoutBtn) {
+        // Initially hide the logout button if no user is logged in
+        const userData = getUserData();
+        logoutBtn.style.display = userData ? 'block' : 'none';
+        
+        logoutBtn.addEventListener('click', function() {
+            // Clear user data from localStorage
+            localStorage.removeItem('userData');
+            
+            // Update UI
+            updateUserUI(null);
+            
+            // Hide the logout button
+            logoutBtn.style.display = 'none';
+            
+            // Show success message
+            showToast('تم تسجيل الخروج بنجاح', 'success');
+            
+            // Close the offcanvas menu if open
+            const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasRight'));
+            if (offcanvas) {
+                offcanvas.hide();
+            }
+        });
+    }
+}
 
 function resetRegisterForm() {
     document.getElementById('userName').value = '';
@@ -152,6 +186,7 @@ function updateUserUI(userData) {
     
     const registerBtn = document.getElementById('userRegisterBtn');
     const userAvatarIcon = document.getElementById('userAvatarIcon');
+    const logoutBtn = document.getElementById('userLogoutBtn');
     
     if (userData) {
         // Update registration button in sidebar
@@ -168,16 +203,26 @@ function updateUserUI(userData) {
             userAvatarIcon.style.backgroundImage = `url(${userData.avatar})`;
             userAvatarIcon.classList.add('avatar-has-image');
         }
+        
+        // Show logout button
+        if (logoutBtn) {
+            logoutBtn.style.display = 'block';
+        }
     } else {
         // Reset if not logged in
         if (registerBtn) {
-            registerBtn.innerHTML = 'Login';
+            registerBtn.innerHTML = 'تسجيل';
             registerBtn.classList.remove('user-logged-in');
         }
         
         if (userAvatarIcon) {
             userAvatarIcon.style.backgroundImage = '';
             userAvatarIcon.classList.remove('avatar-has-image');
+        }
+        
+        // Hide logout button
+        if (logoutBtn) {
+            logoutBtn.style.display = 'none';
         }
     }
 }
